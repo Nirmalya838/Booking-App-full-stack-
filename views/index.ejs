@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Booking App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Booking Application</h1>
+  </header>
+
+  <section class="container">
+    <form id="my-form" action="/user/add-user" method="POST">
+      <h1>Add User</h1>
+      <div class="msg"></div>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="username" required>
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="emailId" required>
+      </div>
+      <div>
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phonenumber" required>
+      </div>
+      <div>
+        <input class="btn" type="submit" value="Submit" id="submit">
+      </div>
+    </form>
+    
+    <h2>User List</h2>
+    <ul>
+      <% users.forEach(user => { %>
+        <li>
+          <strong>ID:</strong> <%= user.ID %>
+          <strong>Name:</strong> <%= user.USERNAME %><br>
+          <strong>Email:</strong> <%= user.EMAILID %>
+          <div class="buttons">
+            <button onclick="editUser('<%= user.ID %>')">Edit</button>
+            <button onclick="deleteUser(this)" data-userid="<%= user.ID %>">Delete</button>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/main.js"></script>
+</body>
+</html>
